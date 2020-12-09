@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table>
+	<tr>
+		<th>nom</th>
+		<th>prenom</th>
+		<th>mail</th>
+		<th>password</th>
+		<th>action</th>
+	</tr>
+	{% for pers in personne%}
+	<tr>
+		<td>{{ pers.nom}}</td>
+		<td>{{ pers.prenom}}</td>
+		<td>{{ pers.mail}}</td>
+		<td>{{ pers.password}}</td>
+		<td>
+			<a href="{{path('get_id', {'id':pers.id})}}">voir</a>
+			<a href="{{path('delete_id', {'id':pers.id})}}">delete</a>
+			<a href="{{path('edit_id', {'id':pers.id})}}">edit</a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+	
+		
+	
+{% endblock %}
