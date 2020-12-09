@@ -27,12 +27,12 @@ class Upload
         return $this->id;
     }
 
-    public function getTelechergeFichier(): ?string
+    public function getTelechergeFichier()
     {
         return $this->TelechergeFichier;
     }
 
-    public function setTelechergeFichier(string $TelechergeFichier): self
+    public function setTelechergeFichier($TelechergeFichier)
     {
         $this->TelechergeFichier = $TelechergeFichier;
 

@@ -105,7 +105,6 @@ class AdController extends AbstractController
      * @Route("/upload", name="uploadFile")
      */
     public function upload(Request $request){
-        dump($request);die();
         $upload = new Upload;
 
         $form = $this->createForm(TelechergeType::class, $upload);
@@ -115,11 +114,11 @@ class AdController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
                     $file = $upload->getTelechergeFichier();
                     $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                    $file->move($this->getParameters('upload_directory'), $fileName);
-                    $upload->setName($fileName);
+                    $file->move($this->getParameter('upload_directory'), $fileName);
+                    $upload->setTelechergeFichier($fileName);
 
                     $em = $this->getDoctrine()->getManager();
-                    $em->persist($file);
+                    $em->persist($upload);
                     $em->flush();
                     
                     return $this->redirectToRoute('ad_index');
