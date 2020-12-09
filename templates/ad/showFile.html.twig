@@ -3,13 +3,11 @@
 {% block body %}
 <table>
 	<tr>
-		<th>nom</th>
 		<th>photo</th>
 	</tr>
 	{% for pers in personne%}
 	<tr>
-		<td>{{ pers.name}}</td>
-        <td>{{ pers.telecherge_fichier}}</td>
+        <td><img src="{{app.request.basepath}}/uploads/images/{{pers.TelechergeFichier}}" alt="monimg" height="100px"/></td>
 	</tr>
 	{% endfor %}
 </table>

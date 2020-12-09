@@ -112,10 +112,10 @@ class AdController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-                    $file = $upload->getTelechergeFichier();
+                    $file = $upload->getTelechergeFichier(); /*get apiana ny anaran ilay fichier*/
                     $fileName = md5(uniqid()).'.'.$file->guessExtension();
                     $file->move($this->getParameter('upload_directory'), $fileName);
-                    $upload->setTelechergeFichier($fileName);
+                    $upload->setTelechergeFichier($fileName); /*set apiana ny anaran ilay fichier*/
 
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($upload);
@@ -135,6 +135,7 @@ class AdController extends AbstractController
      */
     public function showAllFile(UploadRepository $per){
         $personne = $per->findAll() ;
+        /*dump($personne);die();*/
         return $this->render('ad/showFile.html.twig', [
             'personne' => $personne,
         ]);
